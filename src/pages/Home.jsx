@@ -17,7 +17,7 @@ const Home = () => {
     if (isPlaying) {
       interval = setInterval(() => {
         setIndex((prev) => (prev + 1) % images.length);
-      }, 4000);
+      }, 7000);
     }
     return () => clearInterval(interval);
   }, [isPlaying]);
@@ -44,7 +44,7 @@ const Home = () => {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden" id="Home">
       {images.map((image, i) => (
         <div
           key={i}
