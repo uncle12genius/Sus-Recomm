@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Values from './pages/Values'
 import OurTeam from './pages/OurTeam'
+import Story from './pages/Story'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Home/>
       <About/>
       <Values/>
+      <Story/>
       <OurTeam/>
     </div>
   )

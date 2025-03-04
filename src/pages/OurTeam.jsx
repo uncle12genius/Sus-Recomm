@@ -3,12 +3,12 @@ import React from 'react';
 const OurTeam = () => {
   const teamMembers = [
     {
-      name: "Satya Nadella",
+      name: "James Ayako Ondiege",
       title: "Chairman and Chief Executive Officer",
       image: "",
     },
     {
-      name: "Takeshi Numoto",
+      name: "Florence Njoki",
       title: "Executive Vice President and Chief Marketing Officer",
       image: "",
     },
