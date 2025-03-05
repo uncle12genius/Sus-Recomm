@@ -41,7 +41,7 @@ const core = [
 const Values = () => {
   return (
     <div className="bg-gray-100 py-12 px-6 text-center">
-      <h2 className="text-3xl font-bold text-gray-800">
+      <h2 className="text-3xl font-bold text-[#000072]">
         Our Core Values
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-5xl mx-auto">
