@@ -5,6 +5,7 @@ import About from './pages/About'
 import Values from './pages/Values'
 import OurTeam from './pages/OurTeam'
 import Story from './pages/Story'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -15,6 +16,8 @@ const App = () => {
       <Values/>
       <Story/>
       <OurTeam/>
+      <Footer/>
+
     </div>
   )
 }
