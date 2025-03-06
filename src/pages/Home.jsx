@@ -18,7 +18,7 @@ const Home = () => {
     if (isPlaying) {
       interval = setInterval(() => {
         setIndex((prev) => (prev + 1) % images.length);
-      }, 7000);
+      }, 3000);
     }
     return () => clearInterval(interval);
   }, [isPlaying]);
@@ -58,8 +58,12 @@ const Home = () => {
             i === index ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img src={image.src} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-opacity-50" />
+          {/* Image with gradient overlay */}
+          <div className="relative w-full h-full">
+            <img src={image.src} alt="" className="w-full h-full object-cover" />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+          </div>
 
           {/* Left-Aligned Text Content */}
           <div className="absolute top-1/3 left-10 sm:left-16 max-w-xl text-left">
