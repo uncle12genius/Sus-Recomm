@@ -6,10 +6,10 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Contact Section */}
         <div className="text-center md:text-left mb-3 md:mb-0">
-          <h2 className="text-md font-semibold">Contact Us</h2>
+          <h2 className="text-md font-semibold text-[#000072]">Contact Us</h2>
           <p className="flex items-center text-sm">
             <FaEnvelope className="mr-1" /> 
-            <a href="mailto:info@susrecomm" className="text-blue-600">info@susrecomm</a>
+            <a href="mailto:info@susrecomm.co.ke" className="text-[#000072]">info@susrecomm.co.ke</a>
           </p>
           <p className="flex items-center text-sm">
             <FaPhone className="mr-1" /> 

@@ -6,7 +6,7 @@ const images = [
   { src: "./image1.jpeg", text: "We aim to achieve expansive energy infrastructure and upgrade technology to provide clean and more efficient energy", id: "About" },
   { src: "./image2.jpg", text: "We seek to play an integral role in land management, housing, and the ultimate development of future sustainable cities and communities.", id: "About" },
   { src: "./image3.jpg", text: "We believe in developing workable models around sustainability indicators through possible public-private partnerships.", id: "About" },
-  { src: "./image4.png", text: "We build trusted and enduring relationships with clients, experts, and colleagues to achieve win-win outcomes.", id: "About" },
+  { src: "./image4.jpg", text: "We build trusted and enduring relationships with clients, experts, and colleagues to achieve win-win outcomes.", id: "About" },
 ];
 
 const Home = () => {
