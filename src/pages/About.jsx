@@ -2,48 +2,41 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white" id='About'>
-      {/* Left Section */}
-      <div>
-        <h2 className="text-xl font-bold text-[#000072]" >Who We Are</h2>
-        <p className="mt-2 text-gray-700">
-           SusRecomm envisions a sustainable future for all through innovative solutions to households and communities.
-           We inspire imagination and execute sustainable green solutions in housing, water, energy, and infrastructure by partnering with key stakeholders.
-           Our partners hail from every craft and expertise in our areas of focus, allowing us to combine innovative solutions to get the job done and get it done right.
-          </p>
-          <img
-            src="./house.png"
-            className="mt-4 rounded-lg w-full"
-          />
-        
+    <div className="bg-white p-6" id='About'>
+      
+      {/* Page Title */}
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-semibold text-[#000072] border-b-4 border-[#000072] inline-block pb-2">
+          About Us
+        </h1>
       </div>
 
-      {/* Right Section */}
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        {/* Image on the left */}
         <div>
-          <h3 className="text-lg font-bold text-[#000072]">Mission</h3>
-          <p className="mt-2 text-gray-700">
-            Our mission is to promote efficient and effective design, recommendation,
-           and implementation of sustainable infrastructural solutions to individuals, households, 
-           and communities towards a prosperous Africa.
-          </p>
           <img
-            src="./mission.png"
-            className="mt-4 rounded-lg w-full"
+            src="./who we are.jpg"
+            className="rounded-lg w-full"
+            alt="Who We Are"
           />
         </div>
-        <div>
-          <h3 className="text-lg font-bold text-[#000072]">Vision</h3>
-          <p className="mt-2 text-gray-700">
-          Africa's hub of sustainable infrastructural solutions
+
+        {/* Centered text on the right */}
+        <div className="flex flex-col items-center justify-center text-center">
+          <h2 className="text-2xl font-bold text-[#000072] mb-4">Who We Are</h2>
+          
+          <p className="text-gray-700 max-w-md leading-relaxed">
+            <span className="font-semibold text-[#000072]">SusRecomm</span> envisions a sustainable future for all through 
+            innovative solutions for households and communities. We inspire imagination and execute 
+            <span className="font-semibold"> sustainable green solutions</span> in housing, water, energy, and infrastructure 
+            by partnering with key stakeholders. <br /><br />
+            Our partners come from diverse crafts and expertise, allowing us to combine 
+            <span className="font-semibold"> innovative solutions</span> to get the job done—and get it done right.  
+            <span className="italic block mt-4">"Great things happen when we come together to see beyond the problem."</span>
           </p>
-          <img
-          src="./vision.png"
-           className="mt-4 rounded-lg w-full"
-        />
-          
-          
         </div>
+
       </div>
     </div>
   );
