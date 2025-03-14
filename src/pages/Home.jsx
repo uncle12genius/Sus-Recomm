@@ -64,7 +64,7 @@ const Home = () => {
               src={image.src}
               alt=""
               className="w-full h-full object-cover object-center"
-              style={{ minHeight: "100vh", minWidth: "100vw" }} // Ensure full coverage
+              style={{ minHeight: "100vh", minWidth: "100vw" }} 
             />
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
