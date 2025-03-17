@@ -16,9 +16,9 @@ const Footer = () => {
         {/* Logo and Company Name Section */}
         <div className="flex items-center space-x-2">
           <img
-            src="/path/to/logo.png" 
+            src="./hero.png" 
             alt="Company Logo"
-            className="h-9 w-11 rounded-full " 
+            className=" w-11 h-8 rounded-full " 
           />
           <h2 className="text-lg font-semibold text-primary">SusRecomm</h2>
         </div>
