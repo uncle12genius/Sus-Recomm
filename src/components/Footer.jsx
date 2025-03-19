@@ -2,7 +2,6 @@ import { FaFacebook, FaLinkedin, FaInstagram, FaEnvelope, FaPhone } from "react-
 import { ArrowUp } from "lucide-react"; 
 
 const Footer = () => {
-  // Function to scroll to the top of the page
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -11,14 +10,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white text-gray-900 py-8 px-3 md:px-8 border-t relative">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    <footer className="bg-white text-gray-900 py-6 px-4 md:px-8 border-t relative">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
         {/* Logo and Company Name Section */}
         <div className="flex items-center space-x-2">
           <img
             src="./hero.png" 
             alt="Company Logo"
-            className=" w-11 h-8 rounded-full " 
+            className="w-11 h-8 rounded-full" 
           />
           <h2 className="text-lg font-semibold text-primary">SusRecomm</h2>
         </div>
@@ -37,7 +36,7 @@ const Footer = () => {
         </address>
 
         {/* Social Media Links Section */}
-        <div className="flex flex-col items-center space-y-2">
+        <div className="flex flex-col items-center space-y-2 relative">
           <h2 className="text-md font-semibold text-primary">Follow us</h2>
           <div className="flex space-x-4">
             <a
@@ -74,7 +73,7 @@ const Footer = () => {
       {/* Scroll-to-Top Arrow */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-16 right-8 bg-blue-600 p-3 rounded-full text-white shadow-lg hover:bg-blue-700 transition-colors z-50 md:bottom-8"
+        className="absolute bottom-20 right-4 md:bottom-24 md:right-8 bg-blue-600 p-3 rounded-full text-white shadow-lg hover:bg-blue-700 transition-colors z-50"
         aria-label="Scroll to top"
       >
         <ArrowUp className="h-5 w-5" />
