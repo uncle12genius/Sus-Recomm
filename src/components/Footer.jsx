@@ -19,12 +19,12 @@ const Footer = () => {
             alt="Company Logo"
             className="w-11 h-8 rounded-full" 
           />
-          <h2 className="text-lg font-semibold text-primary">SusRecomm</h2>
+          <h2 className="text-lg font-semibold text-primary text-[#000072]">SusRecomm</h2>
         </div>
 
         {/* Contact Us Section (Middle) */}
         <address className="text-center not-italic">
-          <h2 className="text-md font-semibold text-primary">Contact Us</h2>
+          <h2 className="text-md font-semibold text-primary text-[#000072]">Contact Us</h2>
           <p className="flex items-center justify-center text-sm hover:text-primary transition-colors">
             <FaEnvelope className="mr-1" /> 
             <a href="mailto:info@susrecomm.co.ke" className="text-primary hover:underline">info@susrecomm.co.ke</a>
@@ -37,7 +37,7 @@ const Footer = () => {
 
         {/* Social Media Links Section */}
         <div className="flex flex-col items-center space-y-2 relative">
-          <h2 className="text-md font-semibold text-primary">Follow us</h2>
+          <h2 className="text-md font-semibold text-primary text-[#000072]">Follow us</h2>
           <div className="flex space-x-4">
             <a
               href="https://www.facebook.com/JaGedoBuilders"
