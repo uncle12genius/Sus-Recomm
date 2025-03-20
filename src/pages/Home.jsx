@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { Pause, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { Pause, Play, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react"; // Import ChevronDown
 import { motion } from "framer-motion";
 
 const images = [
-  { src: "./Energy.jpeg", text: "We innovate with partners to expand clean, efficient, and sustainable energy", id: "About" },
-  { src: "./Housing.jpg", text: "We commit to sustainable land, housing, and future green cities development", id: "About" },
-  { src: "./Partnership.jpg", text: "We foster trusted partnerships for lasting, mutually beneficial success", id: "About" },
-  { src: "./water.jpg", text: "We create sustainable water solutions through partnerships and smart investments", id: "About" },
+  { src: "./Energy.jpeg", text: "We innovate with partners to expand clean, efficient, and sustainable energy" },
+  { src: "./Housing.jpg", text: "We commit to sustainable land, housing, and future green cities development" },
+  { src: "./Partnership.jpg", text: "We foster trusted partnerships for lasting, mutually beneficial success" },
+  { src: "./water.jpg", text: "We create sustainable water solutions through partnerships and smart investments" },
 ];
 
 const Home = () => {
@@ -86,13 +86,19 @@ const Home = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="mt-4"
             >
-              <a
-                href={`#${image.id}`}
-                onClick={(e) => smoothScroll(e, `#${image.id}`)}
-                className="px-4 py-2 text-sm sm:text-lg bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+              {/* Make the entire text area clickable */}
+              <button
+                onClick={(e) => smoothScroll(e, "#About")} // Scroll to #About
+                className="text-left focus:outline-none group"
               >
-                Learn More
-              </a>
+                <p className="text-white text-sm sm:text-lg mb-2 hover:underline">
+                  Learn More
+                </p>
+                {/* Downward-facing arrow icon */}
+                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-700 transition-all duration-300">
+                  <ChevronDown className="w-4 h-4 text-white" /> {/* Use ChevronDown */}
+                </div>
+              </button>
             </motion.div>
           </div>
         </div>
