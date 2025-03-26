@@ -71,7 +71,7 @@ const Navbar = () => {
           <img
             src="./hero.png"
             alt="SusRecomm Logo"
-            className="w-11 h-9 rounded-full"
+            className="w-11 h-8 rounded-full"
             aria-hidden="true"
           />
         </div>
