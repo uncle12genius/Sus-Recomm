@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Pause, Play, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react"; // Import ChevronDown
+import { Pause, Play, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react"; 
 import { motion } from "framer-motion";
 
 const images = [
@@ -74,7 +74,7 @@ const Home = () => {
           <div className="absolute top-1/3 left-4 sm:left-16 max-w-xs sm:max-w-xl text-left">
             <motion.h2
               initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 2 }}
               transition={{ duration: 0.8 }}
               className="text-white text-lg sm:text-3xl font-semibold"
             >
@@ -86,7 +86,7 @@ const Home = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="mt-4"
             >
-              {/* Make the entire text area clickable */}
+            
               <button
                 onClick={(e) => smoothScroll(e, "#About")} // Scroll to #About
                 className="text-left focus:outline-none group"
@@ -94,7 +94,7 @@ const Home = () => {
                 <p className="text-white text-sm sm:text-lg mb-2 hover:underline">
                   Learn More
                 </p>
-                {/* Downward-facing arrow icon */}
+                
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-700 transition-all duration-300">
                   <ChevronDown className="w-4 h-4 text-white" /> {/* Use ChevronDown */}
                 </div>
