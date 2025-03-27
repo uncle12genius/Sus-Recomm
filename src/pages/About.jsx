@@ -1,42 +1,54 @@
 import React from 'react';
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 const About = () => {
   return (
     <div className="bg-white p-6" id='About'>
-      
       {/* Page Title */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-semibold text-[#000072] border-b-4 border-[#000072] inline-block pb-2">
-          About Us
+          Who We Are 
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
+      {/* Container for image and cards */}
+      <div className="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto">
         {/* Image on the left */}
-        <div>
+        <div className="md:w-1/2">
           <img
             src="./who we are.jpg"
-            className="rounded-lg w-full"
+            className="rounded-lg w-full h-91.5"
             alt="Who We Are"
           />
         </div>
 
-        {/* Centered text on the right */}
-        <div className="flex flex-col items-center justify-center text-center">
-          <h2 className="text-2xl font-bold text-[#000072] mb-4">Who We Are</h2>
-          
-          <p className="text-gray-700 max-w-md leading-relaxed">
-            <span className="font-semibold text-[#000072]">SusRecomm</span> envisions a sustainable future for all through 
-            innovative solutions for households and communities. We inspire imagination and execute 
-            <span className="font-semibold"> sustainable green solutions</span> in housing, water, energy, and infrastructure 
-            by partnering with key stakeholders. <br /><br />
-            Our partners come from diverse crafts and expertise, allowing us to combine 
-            <span className="font-semibold"> innovative solutions</span> to get the job done—and get it done right.  
-            <span className="italic block mt-4">"Great things happen when we come together to see beyond the problem."</span>
-          </p>
-        </div>
+        {/* Mission Card */}
+        <div className="md:w-1/2 flex flex-col gap-6">
+          <Card className="w-full">
+            <CardBody>
+              <Typography variant="h6" style={{color :'#000072 '}} className="mb-4 uppercase">
+                Our Mission 
+              </Typography>
+              <Typography color="gray" className="mb-8 font-normal">
+                Our mission is to promote efficient and effective design, recommendation,
+                and implementation of sustainable infrastructural solutions to individuals, households,
+                and communities towards a prosperous Africa.
+              </Typography>
+            </CardBody>
+          </Card>
 
+          {/* Vision Card */}
+          <Card className="w-full">
+            <CardBody>
+              <Typography variant="h6" style ={{color:'#000072'}}className="mb-4 uppercase">
+                Our Vision  
+              </Typography>
+              <Typography color="gray" className="mb-8 font-normal">
+                Africa's hub of sustainable infrastructural solutions
+              </Typography>
+            </CardBody>
+          </Card>
+        </div>
       </div>
     </div>
   );
