@@ -1,13 +1,19 @@
 import React, { useEffect, useState, useRef } from "react";
 import { assets } from "../assets/assets";
 
-const NAV_ITEMS = ["Home", "About", "OurTeam"];
+const NAV_ITEMS = [
+  { name: "Home", subItems: null },
+  { name: "About", subItems: ["story", "Values"] },
+  { name: "OurTeam", subItems: null }
+];
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState(null);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+  const subMenuRefs = useRef({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,9 +25,7 @@ const Navbar = () => {
 
   useEffect(() => {
     document.body.style.overflow = showMobileMenu ? "hidden" : "auto";
-    // if (showMobileMenu && closeButtonRef.current) {
-    //   closeButtonRef.current.focus();
-    // }
+    
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -33,21 +37,25 @@ const Navbar = () => {
         menuRef.current &&
         !menuRef.current.contains(e.target) &&
         buttonRef.current &&
-        !buttonRef.current.contains(e.target) // Ensures clicking menu button doesn't close it
+        !buttonRef.current.contains(e.target)
       ) {
         setShowMobileMenu(false);
+        setOpenSubMenu(null);
       }
     };
 
     const handleEscape = (e) => {
-      if (e.key === "Escape") setShowMobileMenu(false);
+      if (e.key === "Escape") {
+        setShowMobileMenu(false);
+        setOpenSubMenu(null);
+      }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleEscape);
 
     return () => {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
     };
   }, []);
@@ -58,6 +66,11 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setShowMobileMenu(false);
+    setOpenSubMenu(null);
+  };
+
+  const toggleSubMenu = (itemName) => {
+    setOpenSubMenu(openSubMenu === itemName ? null : itemName);
   };
 
   return (
@@ -80,16 +93,60 @@ const Navbar = () => {
         <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
           <ul className="flex gap-8 text-gray-800 font-medium text-[15px]">
             {NAV_ITEMS.map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.replace(/\s+/g, "")}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleScroll(item.replace(/\s+/g, ""));
-                  }}
-                  className="hover:text-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1">
-                  {item}
-                </a>
+              <li key={item.name} className="relative group">
+                {item.subItems ? (
+                  <>
+                    <button
+                      onClick={() => toggleSubMenu(item.name)}
+                      className="hover:text-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1 flex items-center gap-1"
+                      aria-expanded={openSubMenu === item.name}
+                      aria-haspopup="true"
+                    >
+                      {item.name}
+                      <svg
+                        className={`w-4 h-4 transition-transform ${openSubMenu === item.name ? "rotate-180" : ""}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {openSubMenu === item.name && (
+                      <ul
+                        ref={(el) => (subMenuRefs.current[item.name] = el)}
+                        className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50"
+                      >
+                        {item.subItems.map((subItem) => (
+                          <li key={subItem}>
+                            <a
+                              href={`#${subItem.replace(/\s+/g, "")}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleScroll(subItem.replace(/\s+/g, ""));
+                              }}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              {subItem}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                ) : (
+                  <a
+                    href={`#${item.name.replace(/\s+/g, "")}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScroll(item.name.replace(/\s+/g, ""));
+                    }}
+                    className="hover:text-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1"
+                  >
+                    {item.name}
+                  </a>
+                )}
               </li>
             ))}
             {/* JaGedo Link - Opens in New Tab */}
@@ -139,16 +196,56 @@ const Navbar = () => {
             <nav aria-label="Mobile navigation">
               <ul className="flex flex-col gap-2 text-blue-800 font-medium bg-white">
                 {NAV_ITEMS.map((item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item.replace(/\s+/g, "")}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleScroll(item.replace(/\s+/g, ""));
-                      }}
-                      className="block px-4 py-3 hover:bg-gray-200 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                      {item}
-                    </a>
+                  <li key={item.name}>
+                    {item.subItems ? (
+                      <div className="flex flex-col">
+                        <button
+                          onClick={() => toggleSubMenu(item.name)}
+                          className="flex justify-between items-center px-4 py-3 hover:bg-gray-200 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          aria-expanded={openSubMenu === item.name}
+                        >
+                          {item.name}
+                          <svg
+                            className={`w-4 h-4 transition-transform ${openSubMenu === item.name ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {openSubMenu === item.name && (
+                          <ul className="pl-4 py-1">
+                            {item.subItems.map((subItem) => (
+                              <li key={subItem}>
+                                <a
+                                  href={`#${subItem.replace(/\s+/g, "")}`}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleScroll(subItem.replace(/\s+/g, ""));
+                                  }}
+                                  className="block px-4 py-2 hover:bg-gray-200 rounded-lg"
+                                >
+                                  {subItem}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ) : (
+                      <a
+                        href={`#${item.name.replace(/\s+/g, "")}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleScroll(item.name.replace(/\s+/g, ""));
+                        }}
+                        className="block px-4 py-3 hover:bg-gray-200 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        {item.name}
+                      </a>
+                    )}
                   </li>
                 ))}
                 <li>

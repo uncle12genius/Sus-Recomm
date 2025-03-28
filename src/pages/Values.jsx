@@ -40,7 +40,7 @@ const core = [
 
 const Values = () => {
   return (
-    <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 text-center">
+    <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 text-center" id='Values'>
       <h2 className="text-3xl font-bold text-[#000072] mb-8">
         Our Core Values
       </h2>
