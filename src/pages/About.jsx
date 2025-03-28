@@ -3,11 +3,11 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 const About = () => {
   return (
-    <div className="bg-white p-6" >
+    <div className="bg-white p-6" id="about">
       {/* Page Title */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-semibold text-[#000072] border-b-4 border-[#000072] inline-block pb-2 "id='About'>
-          Who We Are 
+        <h1 className="text-3xl md:text-4xl font-semibold text-[#000072] border-b-4 border-[#000072] inline-block pb-2">
+          Who We Are
         </h1>
       </div>
 
@@ -17,17 +17,18 @@ const About = () => {
         <div className="md:w-1/2">
           <img
             src="./who we are.jpg"
-            className="rounded-lg w-full h-91.5"
+            className="rounded-lg w-full h-93.5"
             alt="Who We Are"
           />
         </div>
 
-        {/* Mission Card */}
+        {/* Mission and Vision Cards */}
         <div className="md:w-1/2 flex flex-col gap-6">
-          <Card className="w-full hover:bg-[#000072]/10 hover:border-2 hover:border-[#000072] transition-transform  duration-300 hover:scale-105 hover:shadow-xl" >
+          {/* Mission Card - Always has border on mobile, hover effect on desktop */}
+          <Card className="w-full border-2 border-[#000072] hover:bg-[#000072]/10 md:hover:border-[#000072] transition-all duration-300 md:hover:scale-105 md:hover:shadow-xl">
             <CardBody>
-              <Typography variant="h6" style={{color :'#000072 '}} className="mb-4 uppercase">
-                Our Mission 
+              <Typography variant="h6" style={{ color: '#000072' }} className="mb-4 uppercase">
+                Our Mission
               </Typography>
               <Typography color="gray" className="mb-8 font-normal">
                 Our mission is to promote efficient and effective design, recommendation,
@@ -37,11 +38,11 @@ const About = () => {
             </CardBody>
           </Card>
 
-          {/* Vision Card */}
-          <Card className="w-full hover:bg-[#88f384]/10 hover:border-2 hover:border-[#88f384] transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+          {/* Vision Card - Always has border on mobile, hover effect on desktop */}
+          <Card className="w-full border-2 border-[#88f384] hover:bg-[#88f384]/10 md:hover:border-[#88f384] transition-all duration-300 md:hover:scale-105 md:hover:shadow-xl">
             <CardBody>
-              <Typography variant="h6" style ={{color:'#000072'}}className="mb-4 uppercase">
-                Our Vision  
+              <Typography variant="h6" style={{ color: '#000072' }} className="mb-4 uppercase">
+                Our Vision
               </Typography>
               <Typography color="gray" className="mb-8 font-normal">
                 Africa's hub of sustainable infrastructural solutions
