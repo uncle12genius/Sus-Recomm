@@ -3,7 +3,7 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 const About = () => {
   return (
-    <div className="bg-white p-6" id="about">
+    <div className="bg-white p-6" id="About">
       {/* Page Title */}
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-semibold text-[#000072] border-b-4 border-[#000072] inline-block pb-2">
@@ -22,9 +22,9 @@ const About = () => {
           />
         </div>
 
-        {/* Mission and Vision Cards */}
+        {/* Mission  */}
         <div className="md:w-1/2 flex flex-col gap-6">
-          {/* Mission Card - Always has border on mobile, hover effect on desktop */}
+
           <Card className="w-full border-2 border-[#000072] hover:bg-[#000072]/10 md:hover:border-[#000072] transition-all duration-300 md:hover:scale-105 md:hover:shadow-xl">
             <CardBody>
               <Typography variant="h6" style={{ color: '#000072' }} className="mb-4 uppercase">
@@ -38,7 +38,7 @@ const About = () => {
             </CardBody>
           </Card>
 
-          {/* Vision Card - Always has border on mobile, hover effect on desktop */}
+          {/* Vision Card */}
           <Card className="w-full border-2 border-[#88f384] hover:bg-[#88f384]/10 md:hover:border-[#88f384] transition-all duration-300 md:hover:scale-105 md:hover:shadow-xl">
             <CardBody>
               <Typography variant="h6" style={{ color: '#000072' }} className="mb-4 uppercase">
