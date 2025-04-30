@@ -11,6 +11,8 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const subMenuRefs = useRef({});
@@ -25,7 +27,6 @@ const Navbar = () => {
 
   useEffect(() => {
     document.body.style.overflow = showMobileMenu ? "hidden" : "auto";
-    
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -48,6 +49,8 @@ const Navbar = () => {
       if (e.key === "Escape") {
         setShowMobileMenu(false);
         setOpenSubMenu(null);
+        setShowLoginModal(false);
+        setShowSignupModal(false);
       }
     };
 
@@ -77,7 +80,8 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-sm transition-shadow duration-300 ${
         isScrolled ? "shadow-md" : ""
-      }`}>
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center py-4 px-6 md:px-12 lg:px-16">
         {/* Company Logo */}
         <div className="flex items-center gap-2">
@@ -90,8 +94,11 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
-          <ul className="flex gap-8 text-gray-800 font-medium text-[15px]">
+        <nav
+          aria-label="Main navigation"
+          className="hidden md:flex items-center gap-8"
+        >
+          <ul className="flex gap-8 text-gray-800 font-medium text-[15px] items-center">
             {NAV_ITEMS.map((item) => (
               <li key={item.name} className="relative group">
                 {item.subItems ? (
@@ -104,13 +111,20 @@ const Navbar = () => {
                     >
                       {item.name}
                       <svg
-                        className={`w-4 h-4 transition-transform ${openSubMenu === item.name ? "rotate-180" : ""}`}
+                        className={`w-4 h-4 transition-transform ${
+                          openSubMenu === item.name ? "rotate-180" : ""
+                        }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
                     </button>
                     {openSubMenu === item.name && (
@@ -149,15 +163,22 @@ const Navbar = () => {
                 )}
               </li>
             ))}
-            {/* JaGedo Link - Opens in New Tab */}
+            {/* Login / Signup Buttons - styled same as nav items */}
             <li>
-              <a
-                href="https://jagedo.co.ke/landing?callbackUrl=https%3A%2F%2Fjagedo.co.ke"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1">
-                JaGedo
-              </a>
+              <button
+                onClick={() => setShowLoginModal(true)}
+                className="hover:text-blue-600 text-gray-800 transition-colors px-2 py-1"
+              >
+                Login
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => setShowSignupModal(true)}
+                className="hover:text-blue-600 text-gray-800 transition-colors px-2 py-1"
+              >
+                Sign Up
+              </button>
             </li>
           </ul>
         </nav>
@@ -168,7 +189,8 @@ const Navbar = () => {
           ref={buttonRef}
           className="md:hidden p-2 bg-white rounded-lg shadow-sm"
           aria-label="Open menu"
-          aria-expanded={showMobileMenu}>
+          aria-expanded={showMobileMenu}
+        >
           <img src={assets.menu_bar} alt="Menu icon" className="w-8" />
         </button>
       </div>
@@ -178,23 +200,24 @@ const Navbar = () => {
         <div
           className="fixed inset-0 bg-black/30 z-50 md:hidden flex justify-end"
           role="dialog"
-          aria-modal="true">
+          aria-modal="true"
+        >
           <div
             ref={menuRef}
-            className="bg-white w-full shadow-lg transform transition-transform translate-x-0 p-4">
-            {/* Close Button */}
+            className="bg-white w-full shadow-lg transform transition-transform translate-x-0 p-4"
+          >
             <div className="flex justify-end">
               <button
                 onClick={() => setShowMobileMenu(false)}
                 aria-label="Close menu"
-                className="p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md">
+                className="p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+              >
                 <img src={assets.cross_icon} alt="Close menu" className="w-6" />
               </button>
             </div>
 
-            {/* Mobile Navigation */}
             <nav aria-label="Mobile navigation">
-              <ul className="flex flex-col gap-2 text-blue-800 font-medium bg-white">
+              <ul className="flex flex-col gap-2 text-gray-800 font-medium bg-white">
                 {NAV_ITEMS.map((item) => (
                   <li key={item.name}>
                     {item.subItems ? (
@@ -206,13 +229,20 @@ const Navbar = () => {
                         >
                           {item.name}
                           <svg
-                            className={`w-4 h-4 transition-transform ${openSubMenu === item.name ? "rotate-180" : ""}`}
+                            className={`w-4 h-4 transition-transform ${
+                              openSubMenu === item.name ? "rotate-180" : ""
+                            }`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
                           </svg>
                         </button>
                         {openSubMenu === item.name && (
@@ -248,17 +278,57 @@ const Navbar = () => {
                     )}
                   </li>
                 ))}
+                {/* Login / Signup - mobile */}
                 <li>
-                  <a
-                    href="https://jagedo.co.ke/landing?callbackUrl=https%3A%2F%2Fjagedo.co.ke"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-3 hover:bg-gray-200 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    JaGedo
-                  </a>
+                  <button
+                    onClick={() => setShowLoginModal(true)}
+                    className="w-full text-left px-4 py-3 text-gray-800 hover:bg-gray-200 rounded-lg transition-colors"
+                  >
+                    Login
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => setShowSignupModal(true)}
+                    className="w-full text-left px-4 py-3 text-gray-800 hover:bg-gray-200 rounded-lg transition-colors"
+                  >
+                    Sign Up
+                  </button>
                 </li>
               </ul>
             </nav>
+          </div>
+        </div>
+      )}
+
+      {/* Login Modal */}
+      {showLoginModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100]">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-md">
+            <h2 className="text-xl font-semibold mb-4">Login</h2>
+            <p>Login form goes here.</p>
+            <button
+              onClick={() => setShowLoginModal(false)}
+              className="mt-4 text-sm text-blue-600 hover:underline"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Signup Modal */}
+      {showSignupModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100]">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-md">
+            <h2 className="text-xl font-semibold mb-4">Sign Up</h2>
+            <p>Signup form goes here.</p>
+            <button
+              onClick={() => setShowSignupModal(false)}
+              className="mt-4 text-sm text-blue-600 hover:underline"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
